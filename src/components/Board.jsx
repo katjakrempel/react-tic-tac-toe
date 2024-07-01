@@ -35,7 +35,7 @@ function Board({ xIsNext, squares, onPlay }) {
         return { winner: squares[a], winningLine: lines[i] };
       }
     }
-    return { winner: null, winningLine: null };
+    return { winner: null };
   }
 
   const { winner, winningLine } = calculateWinner(squares);
