@@ -4,6 +4,7 @@ import Board from "./Board";
 function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [isDescending, setIsDescending] = useState(false);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
@@ -15,6 +16,10 @@ function Game() {
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
+  }
+
+  function toggleSort() {
+    setIsDescending(!isDescending);
   }
 
   const moves = history.map((squares, move) => {
@@ -44,7 +49,10 @@ function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <button className="reverse-button" onClick={() => toggleSort()}>
+          Reverse
+        </button>
+        <ol>{isDescending ? moves.reverse() : moves}</ol>
       </div>
     </div>
   );
