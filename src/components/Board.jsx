@@ -2,7 +2,7 @@ import Square from "./Square";
 
 function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
-    if (squares[i] || calculateWinner(squares)) {
+    if (squares[i] || winner) {
       return;
     }
     const nextSquares = squares.slice();
@@ -11,7 +11,7 @@ function Board({ xIsNext, squares, onPlay }) {
     } else {
       nextSquares[i] = "O";
     }
-    onPlay(nextSquares)
+    onPlay(nextSquares);
   }
 
   function calculateWinner(squares) {
@@ -32,13 +32,13 @@ function Board({ xIsNext, squares, onPlay }) {
         squares[a] === squares[b] &&
         squares[a] === squares[c]
       ) {
-        return squares[a];
+        return { winner: squares[a], winningLine: lines[i] };
       }
     }
-    return null;
+    return { winner: null, winningLine: null };
   }
 
-  const winner = calculateWinner(squares);
+  const { winner, winningLine } = calculateWinner(squares);
   let status;
   if (winner) {
     status = "Winner: " + winner;
@@ -50,19 +50,55 @@ function Board({ xIsNext, squares, onPlay }) {
     <>
       <div className="status">{status}</div>
       <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+        <Square
+          value={squares[0]}
+          onSquareClick={() => handleClick(0)}
+          highlight={winner ? winningLine.includes(0) : false}
+        />
+        <Square
+          value={squares[1]}
+          onSquareClick={() => handleClick(1)}
+          highlight={winner ? winningLine.includes(1) : false}
+        />
+        <Square
+          value={squares[2]}
+          onSquareClick={() => handleClick(2)}
+          highlight={winner ? winningLine.includes(2) : false}
+        />
       </div>
       <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+        <Square
+          value={squares[3]}
+          onSquareClick={() => handleClick(3)}
+          highlight={winner ? winningLine.includes(3) : false}
+        />
+        <Square
+          value={squares[4]}
+          onSquareClick={() => handleClick(4)}
+          highlight={winner ? winningLine.includes(4) : false}
+        />
+        <Square
+          value={squares[5]}
+          onSquareClick={() => handleClick(5)}
+          highlight={winner ? winningLine.includes(5) : false}
+        />
       </div>
       <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+        <Square
+          value={squares[6]}
+          onSquareClick={() => handleClick(6)}
+          highlight={winner ? winningLine.includes(6) : false}
+        />
+        <Square
+          value={squares[7]}
+          onSquareClick={() => handleClick(7)}
+          highlight={winner ? winningLine.includes(7) : false}
+        />
+        <Square
+          value={squares[8]}
+          onSquareClick={() => handleClick(8)}
+          highlight={winner ? winningLine.includes(8) : false}
+        />
       </div>
     </>
   );
