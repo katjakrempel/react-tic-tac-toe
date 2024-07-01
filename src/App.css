@@ -71,9 +71,25 @@ body {
   width: 34px;
 }
 
+.winning-square {
+  background: #fff;
+  border: 3px solid #999;
+  border-color: yellowgreen;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
 .board-row:after {
   clear: both;
-  content: '';
+  content: "";
   display: table;
 }
 
