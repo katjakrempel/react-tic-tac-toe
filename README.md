@@ -3,11 +3,13 @@
 ## Overview
 This is an interactive tic-tac-toe game built with React. It stores the history of moves as the game progresses and allows players to go back to previous versions.
 
-The code is based on a beginner-friendly tutorial in the official [React documentation](https://react.dev/learn/tutorial-tic-tac-toe:). I've implemented some of the suggested improvements:
+The code is based on a beginner-friendly tutorial in the official [React documentation](https://react.dev/learn/tutorial-tic-tac-toe:). The starter code can be found [here](https://codesandbox.io/s/lmwsyf).
 
+I've implemented some of the suggested improvements:
 * For the current move only, show “You are at move #…” instead of a button.
 * Add a toggle button that lets you sort the moves in either ascending or descending order.
 * When someone wins, highlight the three squares that caused the win.
+* When no one wins, display a message about the result being a draw.
 
 
 ![Game screenshot](/src/assets/game-screenshot.png?raw=true "Game screenshot")
